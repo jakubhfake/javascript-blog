@@ -85,7 +85,7 @@ body {
 
 /* Post */
 .post {
-  /*display: none;*/
+  display: none;
 }
 
 .post.active {
