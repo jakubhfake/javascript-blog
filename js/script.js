@@ -32,3 +32,4 @@
     link.addEventListener("click", titleClickHandler);
   }
 }
+
