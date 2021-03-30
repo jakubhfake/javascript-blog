@@ -28,7 +28,8 @@ const titleClickHandler = function (event) {
   const idArticle = document.querySelector(hrefLink);
   console.log(idArticle);
 
-  /* [IN PROGRESS] add class 'active to the correct article */
+  /* [IN PROGRESS] add class 'active' to the correct article */
+  idArticle.classList.add("active");
 };
 
 const links = document.querySelectorAll(".titles a");
