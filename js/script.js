@@ -5,6 +5,12 @@ const titleClickHandler = function (event) {
   console.log(event);
 
   /* remove class 'active' from all article links */
+  const activeLinks = document.querySelectorAll(".titles a.active");
+  for (let activeLink of activeLinks) {
+    activeLink.classList.remove("active");
+    console.log(activeLink);
+  }
+
   /* add class 'active' to clicked link */
   /* remove class 'active' from all articles */
   /* get 'href' attribute from the clicked articles */
