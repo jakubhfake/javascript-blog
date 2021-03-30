@@ -32,4 +32,13 @@
     link.addEventListener("click", titleClickHandler);
   }
 }
+{
+  /* delete list of links from left aside */
+  /* for all articles: */
+  /* read article id na save it in to the const */
+  /* find element with article title and save title in const */
+  /* make a HTML code for link and save it in to the const */
+  /* insert made HTML code to link list from left aside*/
+}
+
 
