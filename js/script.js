@@ -36,18 +36,26 @@
     optTitleListSelector = ".titles";
 
   function generateTitleLinks() {
-    /*delete list of links from left aside */
+    /* [DONE] delete list of links from left aside */
     const titleList = document.querySelector(optTitleListSelector);
     console.log(titleList);
-    function clearMessage(){
-      titleList.innerHTML = '';
+    function clearMessage() {
+      titleList.innerHTML = "";
     }
     clearMessage();
-    /* for all articles: */
-    /* read article id na save it in to the const */
-    /* find element with article title and save title in const */
-    /* make a HTML code for link and save it in to the const */
-    /* insert made HTML code to link list from left aside*/
+    /*for all articles: */
+
+    const articles = document.querySelectorAll(optArticleSelector);
+    for (let article of articles) {
+      /* [DONE] read article id na save it in to the const */
+      const articleId = article.getAttribute("id");
+      console.log(articleId);
+      /* [DONE] find element with article title and save title in const */
+      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+      /* [IN PROGRESS] make a HTML code for link and save it in to the const */
+
+      /* insert made HTML code to link list from left aside*/
+    }
   }
 
   generateTitleLinks();
