@@ -37,6 +37,12 @@
 
   function generateTitleLinks() {
     /*delete list of links from left aside */
+    const titleList = document.querySelector(optTitleListSelector);
+    console.log(titleList);
+    function clearMessage(){
+      titleList.innerHTML = '';
+    }
+    clearMessage();
     /* for all articles: */
     /* read article id na save it in to the const */
     /* find element with article title and save title in const */
