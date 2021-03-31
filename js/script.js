@@ -37,6 +37,7 @@
 
   function generateTitleLinks() {
     /* [DONE] delete list of links from left aside */
+    /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     console.log(titleList);
     function clearMessage() {
@@ -48,13 +49,21 @@
     const articles = document.querySelectorAll(optArticleSelector);
     for (let article of articles) {
       /* [DONE] read article id na save it in to the const */
+      /* get the article id */
       const articleId = article.getAttribute("id");
       console.log(articleId);
       /* [DONE] find element with article title and save title in const */
+      /* find the title element */
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-      /* [IN PROGRESS] make a HTML code for link and save it in to the const */
+      /* [DONE] make a HTML code for link and save it in to the const */
+      /* get the title from the title element */
 
-      /* insert made HTML code to link list from left aside*/
+      const linkHTML = `<li><a href="#${articleId}"><span>${articleTitle}</span></a></li>`;
+      console.log(linkHTML);
+      /* [IN PROGRESS] insert made HTML code to link list from left aside*/
+
+      /*titleList.innerHTML = titleList.innerHTML + linkHTML;*/
+      titleList.insertAdjacentHTML("beforeend", linkHTML);
     }
   }
 
