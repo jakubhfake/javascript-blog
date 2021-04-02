@@ -27,7 +27,8 @@ const titleClickHandler = function (event) {
 };
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles';
+  optTitleListSelector = '.titles',
+  optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks() {
   const titleList = document.querySelector(optTitleListSelector);
@@ -52,30 +53,35 @@ function generateTitleLinks() {
   }
 }
 generateTitleLinks();
-
+ 
 function generateTags() {
-  /* find all articlea */
+  /* [DONE] find all articles */
+  let articles = document.querySelectorAll(optArticleTagsSelector);
+  console.log(articles);
   
-  /* START LOOP: for every artcle: */
+  /* [IN PROGRESS] START LOOP: for every artcle: */
 
+  // eslint-disable-next-line indent
     /* find tags wrapper */
 
-    /* make html variable with empty string */
+  /* make html variable with empty string */
 
-    /*get tags from data-tags attribute */
+  /*get tags from data-tags attribute */
 
-    /* split tags into array */
+  /* split tags into array */
 
-    /* START LOOP: for each tag: */
+  /* START LOOP: for each tag: */
 
-      /* generate HTML of the link */
+  /* generate HTML of the link */
 
-      /* add generated code to html variable */
+  /* add generated code to html variable */
 
-    /* END LOOP: for each tag */
+  /* END LOOP: for each tag */
 
-    /* insert HTML of all the links into the tags wrapper */
+  /* insert HTML of all the links into the tags wrapper */
 
-    /* END LOOP: for every article */
-    
+  /* END LOOP: for every article */
+ 
 }
+
+generateTags();
