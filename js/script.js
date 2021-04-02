@@ -31,11 +31,8 @@
 
   function generateTitleLinks() {
     const titleList = document.querySelector(optTitleListSelector);
-    function clearMessage() {
-      titleList.innerHTML = '';
-    }
-    clearMessage();
-
+    titleList.innerHTML = '';
+    
     let articles = document.querySelectorAll(optArticleSelector);
 
     let html = '';
