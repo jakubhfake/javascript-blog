@@ -62,15 +62,13 @@ function generateTags() {
    for (let article of articles) {
       const articleId = article.getAttribute('id');
       console.log('Id artykułu: ', articleId);
-    }
-    
+      
   // eslint-disable-next-line indent
     /* [DONE] find tags wrapper */
-    const tagList = document.querySelector(optArticleTagsSelector);
-    console.log('lista tagów artykułów: ', tagList);
-
+    const tagList = article.querySelector(optArticleTagsSelector);
+    
   /* [DONE] make html variable with empty string */
-  tagList.innerHTML='';
+    tagList.innerHTML='';
 
   /* [IN PROGRESS] get tags from data-tags attribute */
 
@@ -87,7 +85,7 @@ function generateTags() {
   /* insert HTML of all the links into the tags wrapper */
 
   /* END LOOP: for every article */
- 
+  }
 }
 
 generateTags();
