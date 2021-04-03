@@ -58,14 +58,16 @@ function generateTags() {
   
   const articles = document.querySelectorAll(optArticleSelector);
   console.log('Znalezione artykuły', articles);
-  /* [IN PROGRESS] START LOOP: for every artcle: */
+  /* [DONE] START LOOP: for every artcle: */
    for (let article of articles) {
       const articleId = article.getAttribute('id');
       console.log('Id artykułu: ', articleId);
     }
     
   // eslint-disable-next-line indent
-    /* find tags wrapper */
+    /* [IN PROGRESS] find tags wrapper */
+    const tagList = document.querySelector(optArticleTagsSelector);
+    console.log('lista tagów artykułów: ', tagList);
 
   /* make html variable with empty string */
 
