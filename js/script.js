@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 'use strict';
 
 const titleClickHandler = function (event) {
@@ -59,30 +60,31 @@ function generateTags() {
   const articles = document.querySelectorAll(optArticleSelector);
   console.log('Znalezione artykuły', articles);
   /* [DONE] START LOOP: for every artcle: */
+   // eslint-disable-next-line indent
    for (let article of articles) {
       const articleId = article.getAttribute('id');
       console.log('Id artykułu: ', articleId);
       
-  // eslint-disable-next-line indent
-    /* [DONE] find tags wrapper */
+      /* [DONE] find tags wrapper */
     const tagList = article.querySelector(optArticleTagsSelector);
     
-  /* [DONE] make html variable with empty string */
+      /* [DONE] make html variable with empty string */
     tagList.innerHTML='';
+    let html = '';
+    /* [DONE] get tags from data-tags attribute */
+    const articleTag = article.getAttribute('data-tags');
+    console.log(articleTag);
+    /* [IN PROGRESS] split tags into array */
 
-  /* [IN PROGRESS] get tags from data-tags attribute */
+      /* START LOOP: for each tag: */
 
-  /* split tags into array */
+      /* generate HTML of the link */
 
-  /* START LOOP: for each tag: */
+      /* add generated code to html variable */
 
-  /* generate HTML of the link */
+      /* END LOOP: for each tag */
 
-  /* add generated code to html variable */
-
-  /* END LOOP: for each tag */
-
-  /* insert HTML of all the links into the tags wrapper */
+    /* insert HTML of all the links into the tags wrapper */
 
   /* END LOOP: for every article */
   }
