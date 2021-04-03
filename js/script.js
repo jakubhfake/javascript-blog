@@ -47,7 +47,7 @@ function generateTitleLinks() {
   }
   titleList.innerHTML = html;
   const links = document.querySelectorAll('.titles a');
-  console.log(links);
+  console.log('linki do artykułów: ', links);
   for (let link of links) {
     link.addEventListener('click', titleClickHandler);
   }
@@ -77,17 +77,16 @@ function generateTags() {
       /* START LOOP: for each tag: */
         for(let tag of articleTagsArray){
       /* [DONE] generate HTML of the link */
-        const linkHTML = '<li.,a href="#tag-' + tag + '"></a></li>';
+        const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       /* [DONE] add generated code to html variable */
-          html = html + linkHTML;
-          console.log('link z tagiem: ', html);
+          html =  html + tagLinkHTML;
       /* END LOOP: for each tag */
         }
     /* [IN PROGRESS] insert HTML of all the links into the tags wrapper */
-
-  /* END LOOP: for every article */
+      tagList.innerHTML = html;
+      console.log(tagList);
+    /* END LOOP: for every article */
   }
 }
-
 generateTags();
 /* Don't forget to delete things from index.html file */
