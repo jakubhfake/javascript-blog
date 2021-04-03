@@ -34,12 +34,11 @@ function generateTitleLinks() {
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
     
-  let articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector);
 
   let html = '';
   for (let article of articles) {
     const articleId = article.getAttribute('id');
-
     const articleTitle = article.querySelector(optTitleSelector).innerHTML;
     console.log(articleTitle);
     const linkHTML = '<li><a href="#' + articleId +'"><span>' + articleTitle + '</span></a></li>';
@@ -56,11 +55,15 @@ generateTitleLinks();
  
 function generateTags() {
   /* [DONE] find all articles */
-  let articles = document.querySelectorAll(optArticleTagsSelector);
-  console.log(articles);
   
+  const articles = document.querySelectorAll(optArticleSelector);
+  console.log('Znalezione artykuły', articles);
   /* [IN PROGRESS] START LOOP: for every artcle: */
-
+   for (let article of articles) {
+      const articleId = article.getAttribute('id');
+      console.log('Id artykułu: ', articleId);
+    }
+    
   // eslint-disable-next-line indent
     /* find tags wrapper */
 
