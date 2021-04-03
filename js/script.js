@@ -65,13 +65,14 @@ function generateTags() {
     }
     
   // eslint-disable-next-line indent
-    /* [IN PROGRESS] find tags wrapper */
+    /* [DONE] find tags wrapper */
     const tagList = document.querySelector(optArticleTagsSelector);
     console.log('lista tagów artykułów: ', tagList);
 
-  /* make html variable with empty string */
+  /* [DONE] make html variable with empty string */
+  tagList.innerHTML='';
 
-  /*get tags from data-tags attribute */
+  /* [IN PROGRESS] get tags from data-tags attribute */
 
   /* split tags into array */
 
