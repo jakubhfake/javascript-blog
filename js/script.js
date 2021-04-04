@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 'use strict';
 
 const titleClickHandler = function (event) {
@@ -55,37 +54,26 @@ function generateTitleLinks() {
 generateTitleLinks();
  
 function generateTags() {
-  /* [DONE] find all articles */
   
   const articles = document.querySelectorAll(optArticleSelector);
   console.log('Znalezione artykuły', articles);
-  /* [DONE] START LOOP: for every artcle: */
-   // eslint-disable-next-line indent
-   for (let article of articles) {
-      const articleId = article.getAttribute('id');
-      console.log('Id artykułu: ', articleId);
-            /* [DONE] find tags wrapper */
-    const tagList = article.querySelector(optArticleTagsSelector);
+  for (let article of articles) {
+    const articleId = article.getAttribute('id');
+    console.log('Id artykułu: ', articleId);
     
-      /* [DONE] make html variable with empty string */
+    const tagList = article.querySelector(optArticleTagsSelector);
     tagList.innerHTML='';
     let html = '';
-    /* [DONE] get tags from data-tags attribute */
     const articleTag = article.getAttribute('data-tags');
-    /* [DONE] split tags into array */
     const articleTagsArray = articleTag.split(' ');
-      /* START LOOP: for each tag: */
-        for(let tag of articleTagsArray){
-      /* [DONE] generate HTML of the link */
-        const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      /* [DONE] add generated code to html variable */
-          html =  html + tagLinkHTML;
-      /* END LOOP: for each tag */
-        }
-    /* [IN PROGRESS] insert HTML of all the links into the tags wrapper */
-      tagList.innerHTML = html;
-      console.log(tagList);
-    /* END LOOP: for every article */
+     
+    for(let tag of articleTagsArray){
+      const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      html =  html + tagLinkHTML;
+    }
+    tagList.innerHTML = html;
+    console.log(tagList);
+
   }
 }
 generateTags();
