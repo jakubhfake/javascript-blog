@@ -91,26 +91,27 @@ function tagClickHandler(event){
   const href = clickedElement.getAttribute('href');
   console.log('href tagu; ', href);
   /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
-  const tag = hrefTag.replace('#tag-', '');
+  const tag = href.replace('#tag-', '');
   console.log(tag);
   /* [DONE] find all tag links with class active */
   const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
-  
-  /* START LOOP: for each active tag link */
+  console.log('All active tags: ', activeTags);
+  /* [DONE] START LOOP: for each active tag link */
     for (let activeTag of activeTags) {
-        /* remove class active */
+        /* [DONE] remove class active */
       activeTag.classList.remove('active');
     }
-  /* END LOOP: for each active tag link */
+  /* [DONE] END LOOP: for each active tag link */
 
-  /* find all tag links with "href" attribute equal to the "href" constant */
+  /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
   
-  const hrefTag = document.querySelectorAll('a[href="' + href + '"]');
-  console.log('Aktywne Tagi: ', hrefTag);
-  /* START LOOP: for each found tag link */
- 
+  const hrefTags = document.querySelectorAll('a[href="' + href + '"]');
+  console.log('Aktywne Tagi: ', hrefTags);
+  /* [IN PROGRESS] START LOOP: for each found tag link */
+    for (let hrefTag of hrefTags) {
   /* add class active */
-
+      hrefTag.classList.add('active');
+      console.log('Aktywny tag: ', hrefTag);
   }
   /* END LOOP: for each found tag link */
   
