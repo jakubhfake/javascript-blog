@@ -31,11 +31,11 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
 
-function generateTitleLinks() {
+function generateTitleLinks(customSelector = '') {
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
-    
-  const articles = document.querySelectorAll(optArticleSelector);
+  
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
   let html = '';
   for (let article of articles) {
@@ -115,7 +115,8 @@ function tagClickHandler(event){
   /* END LOOP: for each found tag link */
   
   /* [IN PROGRESS] execute function "generateTitleLinks" with article selector as argument */
-generateTitleLinks('[date-tags~="' + tag + '"]');
+generateTitleLinks('[data-tags~="' + tag + '"]');
+
 }
 
 function addClickListenersToTags(){
