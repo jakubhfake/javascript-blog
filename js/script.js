@@ -6,7 +6,7 @@ const titleClickHandler = function (event) {
   const clickedElement = this;
   console.log('Link was clicked!');
 
-  const activeLinks = document.querySelectorAll('.titles a.active');
+  const activeLinks = document.querySelectorAll('.list a.active');
   for (let activeLink of activeLinks) {
     activeLink.classList.remove('active');
   }
@@ -92,22 +92,24 @@ function tagClickHandler(event){
   const tag = hrefTag.replace('#tag-', '');
   console.log(tag);
   /* [DONE] find all tag links with class active */
-  const activeTags = document.querySelectorAll('.tags a.active');
-  console.log(activeTags);
-    /* START LOOP: for each active tag link */
+  const activeTags = document.querySelectorAll('.list a.active');
+  
+  /* START LOOP: for each active tag link */
     for (let activeTag of activeTags) {
   
       /* remove class active */
       activeTag.classList.remove('active');
     }
   /* END LOOP: for each active tag link */
-
+  clickedElement.classList.add('active'); /* nie wiem czy ten element ma być w tym miejscu, do sprawdzenia */
   /* find all tag links with "href" attribute equal to the "href" constant */
-
+  /*const selectorTags = document.querySelectorAll('.tags a.active[href^="#tag-"]');
+  console.log('Selektor: ', selectorTags);*/
   /* START LOOP: for each found tag link */
-
-    /* add class active */
-
+  /*for (let selectorTag of selectorTags) {*/
+  /* add class active */
+  /*  selectorTag.classList.add('active');
+  }*/
   /* END LOOP: for each found tag link */
 
   /* execute function "generateTitleLinks" with article selector as argument */
