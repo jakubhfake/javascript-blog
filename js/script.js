@@ -107,7 +107,7 @@ function tagClickHandler(event){
   
   const hrefTags = document.querySelectorAll('a[href="' + href + '"]');
   console.log('Aktywne Tagi: ', hrefTags);
-  /* [IN PROGRESS] START LOOP: for each found tag link */
+  /* [DONE] START LOOP: for each found tag link */
     for (let hrefTag of hrefTags) {
   /* add class active */
       hrefTag.classList.add('active');
@@ -115,8 +115,8 @@ function tagClickHandler(event){
   }
   /* END LOOP: for each found tag link */
   
-  /* execute function "generateTitleLinks" with article selector as argument */
-
+  /* [IN PROGRESS] execute function "generateTitleLinks" with article selector as argument */
+generateTitleLinks('[date-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags(){
