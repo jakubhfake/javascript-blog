@@ -81,11 +81,12 @@ generateTags();
 
 function tagClickHandler(event){
   /* [DONE] prevent default action for this event */
-  event.preventDefault().
-  /* make new constant named "clickedElement" and give it the value of "this" */
-
+  event.preventDefault();
+  /* [In PROGRESS] make new constant named "clickedElement" and give it the value of "this" */
+  const clickedElement = this;
+  console.log('Tag was cliked!', clickedElement);
   /* make a new constant "href" and read the attribute "href" of the clicked element */
-
+ 
   /* make a new constant "tag" and extract tag from the "href" constant */
 
   /* find all tag links with class active */
@@ -109,13 +110,17 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
+  const linkTags = document.querySelectorAll('.sidebar .tags a');
+  console.log('linki do artykułów: ', linkTags);
 
   /* START LOOP: for each link */
 
     /* add tagClickHandler as event listener for that link */
-
+  for (let linkTag of linkTags) {
+      linkTag.addEventListener('click', tagClickHandler);
+      }
   /* END LOOP: for each link */
-}
+  }
 
 addClickListenersToTags();
 
