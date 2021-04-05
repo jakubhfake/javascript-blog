@@ -29,8 +29,7 @@ const titleClickHandler = function (event) {
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticlesAllTagsSelector = '.post-tags .list a';
+  optArticleTagsSelector = '.post-tags .list';
 
 function generateTitleLinks() {
   const titleList = document.querySelector(optTitleListSelector);
