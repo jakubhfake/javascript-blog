@@ -59,7 +59,7 @@ function generateTags() {
   const articles = document.querySelectorAll(optArticleSelector);
   /*console.log('Znalezione artykuły', articles);*/
   for (let article of articles) {
-    const articleId = article.getAttribute('id');
+    /*const articleId = article.getAttribute('id');*/
     /*console.log('Id artykułu: ', articleId);*/
     
     const tagList = article.querySelector(optArticleTagsSelector);
@@ -91,12 +91,15 @@ function tagClickHandler(event){
   /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
   const tag = hrefTag.replace('#tag-', '');
   console.log(tag);
-  /* [In PROGRESS] find all tag links with class active */
-
-  /* START LOOP: for each active tag link */
-
-    /* remove class active */
-
+  /* [DONE] find all tag links with class active */
+  const activeTags = document.querySelectorAll('.tags a.active');
+  console.log(activeTags);
+    /* START LOOP: for each active tag link */
+    for (let activeTag of activeTags) {
+  
+      /* remove class active */
+      activeTag.classList.remove('active');
+    }
   /* END LOOP: for each active tag link */
 
   /* find all tag links with "href" attribute equal to the "href" constant */
