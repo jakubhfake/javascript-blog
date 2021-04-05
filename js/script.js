@@ -110,7 +110,7 @@ function tagClickHandler(event){
 
 function addClickListenersToTags(){
   /* find all links to tags */
-  const linkTags = document.querySelectorAll('.sidebar .tags a');
+  const linkTags = document.querySelectorAll('.tags a');
   console.log('linki do artykułów: ', linkTags);
 
   /* START LOOP: for each link */
