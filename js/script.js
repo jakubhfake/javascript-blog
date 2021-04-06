@@ -109,19 +109,20 @@ function addClickListenersToTags() {
 addClickListenersToTags();
 
 // Article Authors
-
+const optArticleAuthorSelector = '.post-author';
 function generateAuthors (){}
 /*for all articles:*/
   /* add author with data-author atribute, delete author from wrapper .post-author */
   
   function generateAuthors() {
-    /* find all articles with author*/
-      
-    /* START LOOP: for every article: */
-    
-      /* find author in wrapper */
-       
-      /* make html variable with empty string */
+    /* [DONE] find all articles with author*/
+    const articles = document.querySelectorAll(optArticleSelector);
+    /* [DONE] START LOOP: for every article: */
+    for(let article of articles) {
+      /* [DONE] find author in wrapper */
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      console.log('Authors in articles', optArticleTagsSelector);A
+      /* [IN PROGRESS] make html variable with empty string */
       
       /* get tags from data-author attribute */
      
