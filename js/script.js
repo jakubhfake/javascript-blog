@@ -138,13 +138,14 @@ const optArticleAuthorSelector = '.post-author';
 
 
 }*/
-/*function addClickListenerToAuthors (){
+function addClickListenerToAuthors (){
 /* find all links to tags */
-
+const linkAuthors = document.querySelectorAll('a[href^="#tag-"]');
   /* START LOOP: for each link */
-
+  for(let linkAuthor of linkAuthors) {
     /* add tagClickHandler as event listener for that link */
-
+    linkAuthor.addEventListener('click', authorClickHandler);
   /* END LOOP: for each link */
-  /*}*/
-  
+  }
+}
+addClickListenersToAuthors();
