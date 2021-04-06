@@ -118,7 +118,6 @@ const optArticleAuthorSelector = '.post-author';
     for(let article of articles) {
       /* [DONE] find author in wrapper */
       const authorWrapper = article.querySelector(optArticleAuthorSelector);
-      console.log('Authors in articles', optArticleTagsSelector);
       /* [DONE]  make html variable with empty string */
       authorWrapper.innerHTML='';
       let html = '';
@@ -140,7 +139,7 @@ const optArticleAuthorSelector = '.post-author';
   odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze 
   atrybutu użyjesz łącznika = zamiast ~=.*/
 
-function authorClickHandler(event){
+function authorClickHandler(event) {
 
   event.preventDefault();
   const clickedElement = this;
@@ -163,9 +162,9 @@ function authorClickHandler(event){
 generateTitleLinks('[data-author="' + href + '"]');
 }
 
-function addClickListenerToAuthors (){
+function addClickListenerToAuthors () {
 /* find all links to tags */
-const linkAuthors = document.querySelectorAll('a[href^="#tag-"]');
+const linkAuthors = document.querySelectorAll('.post-author a[href^="#tag-"]');
   /* START LOOP: for each link */
   for(let linkAuthor of linkAuthors) {
     /* add tagClickHandler as event listener for that link */
@@ -174,3 +173,47 @@ const linkAuthors = document.querySelectorAll('a[href^="#tag-"]');
   }
 }
 addClickListenerToAuthors();
+
+//Chmura tagów
+const optTagsSelector = '.tags.list';
+
+function generateTags() {
+  /* [NEW] create a new variable allTags with an empty array */
+  let allTags = [];
+
+  /* find all articles */
+
+  /* START LOOP: for every article: */
+
+    /* find tags wrapper */
+
+    /* make html variable with empty string */
+
+    /* get tags from data-tags attribute */
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+      /* generate HTML of the link */
+
+      /* add generated code to html variable */
+
+      /* [NEW] check if this link is NOT already in allTags */
+      if(allTags.indexOf(linkHTML) == -1){
+        /* [NEW] add generated code to allTags array */
+        allTags.push(linkHTML);
+      }
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+  /* END LOOP: for every article: */
+
+  /* [NEW] find list of tags in right column */
+  const tagList = document.querySelector('.tags');
+
+  /* [NEW] add html from allTags to tagList */
+  tagList.innerHTML = allTags.join(' ');
+}
