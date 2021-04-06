@@ -29,7 +29,8 @@ const titleClickHandler = function (event) {
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list';
+  optArticleTagsSelector = '.post-tags .list',
+  dataTags = "data-tags";
   
 function generateTitleLinks(customSelector = '') {
   const titleList = document.querySelector(optTitleListSelector);
@@ -61,7 +62,7 @@ function generateTags() {
     const tagList = article.querySelector(optArticleTagsSelector);
     tagList.innerHTML='';
     let html = '';
-    const articleTag = article.getAttribute('data-tags');
+    const articleTag = article.getAttribute(dataTags);
     const articleTagsArray = articleTag.split(' ');
      
     for(let tag of articleTagsArray){
@@ -124,7 +125,7 @@ const optArticleAuthorSelector = '.post-author';
       /* [DONE] get tags from data-author attribute */
       const authorTag = article.getAttribute('data-author');
       /* [DONE] insert HTML author name to all article into the tags wrapper */
-      const linkAuthorHTML = '<a href="#tag-' + authorTag + '">' + authorTag + '</a>'; 
+      const linkAuthorHTML = '<a href="#author-' + authorTag + '">' + authorTag + '</a>'; 
       html = linkAuthorHTML;
       authorWrapper.innerHTML = html;
       console.log(html);
@@ -146,10 +147,10 @@ function authorClickHandler(event) {
   console.log('Author was cliked!', clickedElement);
   const href = clickedElement.getAttribute('href');
   console.log('Author tags href; ', href);
-  const author = href.replace('#tag-', '');
+  const author = href.replace('#author-', '');
   console.log(author);
-  const activeAuthors = document.querySelectorAll('a.active[href^="#tag-"]');
-  console.log('All active tags: ', activeAuthors);
+  const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
+  console.log('All active authors: ', activeAuthors);
   for (let activeAutor of activeAuthors) {
     activeAutor.classList.remove('active');
   }
@@ -164,7 +165,7 @@ generateTitleLinks('[data-author="' + href + '"]');
 
 function addClickListenerToAuthors () {
 /* find all links to tags */
-const linkAuthors = document.querySelectorAll('.post-author a[href^="#tag-"]');
+const linkAuthors = document.querySelectorAll('.post-author a[href^="#author-"]');
   /* START LOOP: for each link */
   for(let linkAuthor of linkAuthors) {
     /* add tagClickHandler as event listener for that link */
@@ -174,46 +175,55 @@ const linkAuthors = document.querySelectorAll('.post-author a[href^="#tag-"]');
 }
 addClickListenerToAuthors();
 
-//Chmura tagów
+//Tags Cloud
 const optTagsSelector = '.tags.list';
 
 function generateTags() {
-  /* [NEW] create a new variable allTags with an empty array */
-  let allTags = [];
+  /* [NEW] create a new variable allTags with an empty object */
+  let allTags = {};
 
   /* find all articles */
-
+  const articles = document.querySelectorAll(optArticleSelector);
   /* START LOOP: for every article: */
-
+  for(let article of articles) {
     /* find tags wrapper */
-
+  const tagsWrapper = article.querySelector(optArticleTagsSelector);
     /* make html variable with empty string */
-
+  let html = '';
     /* get tags from data-tags attribute */
-
+  const articleTags = article.getAttribute(dataTags);
     /* split tags into array */
+  const articleTagsArray = articleTags.split(' ');
 
     /* START LOOP: for each tag */
+  for(let tag of articleTagsArray) {
 
       /* generate HTML of the link */
+      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
 
       /* add generated code to html variable */
+      html = linkHTML;
 
       /* [NEW] check if this link is NOT already in allTags */
-      if(allTags.indexOf(linkHTML) == -1){
+      if(!allTags[tag]) {
         /* [NEW] add generated code to allTags array */
-        allTags.push(linkHTML);
+        allTags[tag] = 1;
+      } else {
+        allTags[tag]++;
       }
 
-    /* END LOOP: for each tag */
-
+      /* END LOOP: for each tag */
+  
     /* insert HTML of all the links into the tags wrapper */
 
-  /* END LOOP: for every article: */
+    /* END LOOP: for every article: */
+    }
+    /* [NEW] find list of tags in right column */
+    const tagList = document.querySelector('.tags');
 
-  /* [NEW] find list of tags in right column */
-  const tagList = document.querySelector('.tags');
-
-  /* [NEW] add html from allTags to tagList */
-  tagList.innerHTML = allTags.join(' ');
+    /* [NEW] add html from allTags to tagList */
+    tagList.innerHTML = allTags.join(' ');
+    console.log(allTags);
+  }
 }
+/* Don't forget delete html code !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
