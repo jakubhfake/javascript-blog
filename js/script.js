@@ -139,20 +139,20 @@ const optArticleAuthorSelector = '.post-author';
   wystarczy, że w funkcji authorClickHandler wywołasz ją z 
   odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze 
   atrybutu użyjesz łącznika = zamiast ~=.*/
-  
-function authorClickHandeler(event){
+
+function authorClickHandler(event){
 
   event.preventDefault();
   const clickedElement = this;
   console.log('Author was cliked!', clickedElement);
   const href = clickedElement.getAttribute('href');
-  console.log('href tagu; ', href);
-  const tag = href.replace('#tag-', '');
-  console.log(tag);
-  const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
-  console.log('All active tags: ', activeTags);
-  for (let activeTag of activeTags) {
-    activeTag.classList.remove('active');
+  console.log('Author tags href; ', href);
+  const author = href.replace('#tag-', '');
+  console.log(author);
+  const activeAuthors = document.querySelectorAll('a.active[href^="#tag-"]');
+  console.log('All active tags: ', activeAuthors);
+  for (let activeAutor of activeAuthors) {
+    activeAutor.classList.remove('active');
   }
 
   const hrefTags = document.querySelectorAll('a[href="' + href + '"]');
@@ -174,4 +174,4 @@ const linkAuthors = document.querySelectorAll('a[href^="#tag-"]');
   /* END LOOP: for each link */
   }
 }
-addClickListenersToAuthors();
+addClickListenerToAuthors();
