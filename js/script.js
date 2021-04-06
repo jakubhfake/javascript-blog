@@ -135,11 +135,6 @@ const optArticleAuthorSelector = '.post-author';
 }
   generateAuthors();
 
-  /*Nie musisz w żaden sposób zmieniać funkcji generateTitleLinks – 
-  wystarczy, że w funkcji authorClickHandler wywołasz ją z 
-  odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze 
-  atrybutu użyjesz łącznika = zamiast ~=.*/
-
 function authorClickHandler(event) {
 
   event.preventDefault();
@@ -176,7 +171,7 @@ const linkAuthors = document.querySelectorAll('.post-author a[href^="#author-"]'
 addClickListenerToAuthors();
 
 //Tags Cloud
-const optTagsSelector = '.tags.list';
+//const optTagsSelector = '.tags.list';
 
 function generateTags() {
   /* [NEW] create a new variable allTags with an empty object */
@@ -214,16 +209,28 @@ function generateTags() {
 
       /* END LOOP: for each tag */
   
-    /* insert HTML of all the links into the tags wrapper */
+      /* insert HTML of all the links into the tags wrapper */
+      tagsWrapper.innerHTML = html;
 
     /* END LOOP: for every article: */
     }
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector('.tags');
 
-    /* [NEW] add html from allTags to tagList */
-    tagList.innerHTML = allTags.join(' ');
-    console.log(allTags);
+    /* [NEW] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for(let tag in allTags){
+   /* [NEW] generate code of a link and add it to allTagsHTML */
+    allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
+   }
+   /* [NEW] END LOOP: for each tag in allTags: */
+
+   /*[NEW] add HTML from allTagsHTML to tagList */
+   tagList.innerHTML = allTagsHTML;
+    
   }
 }
+generateTags();
 /* Don't forget delete html code !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
