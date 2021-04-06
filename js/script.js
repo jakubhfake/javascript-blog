@@ -139,6 +139,7 @@ const optArticleAuthorSelector = '.post-author';
   wystarczy, że w funkcji authorClickHandler wywołasz ją z 
   odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze 
   atrybutu użyjesz łącznika = zamiast ~=.*/
+  
 function authorClickHandeler(event){
 
   event.preventDefault();
@@ -160,7 +161,7 @@ function authorClickHandeler(event){
     hrefTag.classList.add('active');
     console.log('Aktywny tag: ', hrefTag);
   }
-generateTitleLinks('[data-tags~="' + tag + '"]');
+generateTitleLinks('[data-author="' + tag + '"]');
 }
 
 function addClickListenerToAuthors (){
