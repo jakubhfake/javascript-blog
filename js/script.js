@@ -121,7 +121,7 @@ generateTitleLinks('[data-tags~="' + tag + '"]');
 
 function addClickListenersToTags(){
   /* [DONE] find all links to tags */
-  const linkTags = document.querySelectorAll('.tags a');
+  const linkTags = document.querySelectorAll('a[href^="#tag-"]');
   console.log('linki do artykułów: ', linkTags);
 
   /* [DONE] START LOOP: for each link */
