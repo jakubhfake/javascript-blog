@@ -155,13 +155,12 @@ function authorClickHandler(event){
     activeAutor.classList.remove('active');
   }
 
-  const hrefTags = document.querySelectorAll('a[href="' + href + '"]');
-  console.log('Aktywne Tagi: ', hrefTags);
-  for (let hrefTag of hrefTags) {
-    hrefTag.classList.add('active');
-    console.log('Aktywny tag: ', hrefTag);
+  const hrefAuthors = document.querySelectorAll('a[href="' + href + '"]');
+  for (let hrefAuthor of hrefAuthors) {
+    hrefAuthor.classList.add('active');
+    console.log('Active aurhor: ', hrefAuthor);
   }
-generateTitleLinks('[data-author="' + tag + '"]');
+generateTitleLinks('[data-author="' + href + '"]');
 }
 
 function addClickListenerToAuthors (){
