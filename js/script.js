@@ -182,8 +182,7 @@ addClickListenerToAuthors();
 const calculateTagsParams = function (tags)
 
 function generateTags() {
-  
-  /* [NEW] create a new variable allTags with an empty object */
+    /* [NEW] create a new variable allTags with an empty object */
   let allTags = {};
 
   /* find all articles */
@@ -244,4 +243,4 @@ function generateTags() {
   }
 }
 generateTags();
-/* Don't forget delete html code !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+/* Don't forget delete html code !!!!!!!*/
