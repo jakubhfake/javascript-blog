@@ -30,11 +30,11 @@ const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list';
-
+  
 function generateTitleLinks(customSelector = '') {
   const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
-  
+  console.log(customSelector);
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
   let html = '';
@@ -53,6 +53,8 @@ function generateTitleLinks(customSelector = '') {
 }
 generateTitleLinks();
  
+// Article Tags
+
 function generateTags() {
   const articles = document.querySelectorAll(optArticleSelector);
   for (let article of articles) {
@@ -72,7 +74,7 @@ function generateTags() {
 
 generateTags();
 
-function tagClickHandler(event){
+function tagClickHandler(event) {
   event.preventDefault();
   const clickedElement = this;
   console.log('Tag was cliked!', clickedElement);
@@ -95,7 +97,7 @@ function tagClickHandler(event){
 generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
-function addClickListenersToTags(){
+function addClickListenersToTags() {
   const linkTags = document.querySelectorAll('a[href^="#tag-"]');
   console.log('linki do artykułów: ', linkTags);
 
@@ -105,3 +107,36 @@ function addClickListenersToTags(){
 }
 
 addClickListenersToTags();
+
+// Article Authors
+
+function generateAuthors (){}
+/*for all articles:*/
+  /* add author with data-author atribute, delete author from wrapper .post-author */
+  
+  function generateAuthors() {
+    /* find all articles with author*/
+      
+    /* START LOOP: for every article: */
+    
+      /* find author in wrapper */
+       
+      /* make html variable with empty string */
+      
+      /* get tags from data-author attribute */
+     
+      /* insert HTML author name to all article into the tags wrapper */
+     
+    /* END LOOP: for every article: */
+    
+  }
+  generateAuthors();
+/*function authorClickHandeler(event)(){
+
+
+}*/
+/*function addClickListenerToAuthors (){
+/* find all links to tags */
+
+  /*}*/
+  
