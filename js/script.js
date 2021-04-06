@@ -134,10 +134,35 @@ const optArticleAuthorSelector = '.post-author';
   }
 }
   generateAuthors();
-/*function authorClickHandeler(event)(){
 
+  /*Nie musisz w żaden sposób zmieniać funkcji generateTitleLinks – 
+  wystarczy, że w funkcji authorClickHandler wywołasz ją z 
+  odpowiednim argumentem. Pamiętaj, że w tym wypadku w selektorze 
+  atrybutu użyjesz łącznika = zamiast ~=.*/
+function authorClickHandeler(event){
 
-}*/
+  event.preventDefault();
+  const clickedElement = this;
+  console.log('Author was cliked!', clickedElement);
+  const href = clickedElement.getAttribute('href');
+  console.log('href tagu; ', href);
+  const tag = href.replace('#tag-', '');
+  console.log(tag);
+  const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
+  console.log('All active tags: ', activeTags);
+  for (let activeTag of activeTags) {
+    activeTag.classList.remove('active');
+  }
+
+  const hrefTags = document.querySelectorAll('a[href="' + href + '"]');
+  console.log('Aktywne Tagi: ', hrefTags);
+  for (let hrefTag of hrefTags) {
+    hrefTag.classList.add('active');
+    console.log('Aktywny tag: ', hrefTag);
+  }
+generateTitleLinks('[data-tags~="' + tag + '"]');
+}
+
 function addClickListenerToAuthors (){
 /* find all links to tags */
 const linkAuthors = document.querySelectorAll('a[href^="#tag-"]');
