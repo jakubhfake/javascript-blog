@@ -189,6 +189,9 @@ function calculateTagsParams(tags){
     }
   }
   return params;
+}
+function calculateTagClass(count, params){
+  // tu muszą być ify ale na dziś chyba koniec, jutro również jest dzień
 
 }
 
