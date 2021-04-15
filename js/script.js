@@ -79,7 +79,6 @@ function generateTags() {
     tagList.innerHTML = html;
   }
 }
-
 generateTags();
 
 function tagClickHandler(event) {
@@ -102,12 +101,12 @@ function tagClickHandler(event) {
     hrefTag.classList.add('active');
     console.log('Aktywny tag: ', hrefTag);
   }
-generateTitleLinks('[data-tags~="' + tag + '"]');
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags() {
   const linkTags = document.querySelectorAll('a[href^="#tag-"]');
-  console.log('linki do artykułów: ', linkTags);
+  //console.log('Links to articles: ', linkTags);
 
   for (let linkTag of linkTags) {
     linkTag.addEventListener('click', tagClickHandler);
@@ -190,10 +189,19 @@ function calculateTagsParams(tags){
   }
   return params;
 }
-function calculateTagClass(count, params){
-  // tu muszą być ify ale na dziś chyba koniec, jutro również jest dzień
-
-}
+//function calculateTagClass, zastanowić się jak zapisać ilość unikalnych tagów 
+ 
+  function calculateTagClass(count, params){
+    const normalizedCount = count - params.min;
+   //console.log('count: ', count, 'params.min: ', params.min);
+    //console.log(normalizedCount);
+    const averageTagCount = params.max - params.min;
+    const percentageClassValue = normalizedCount / averageTagCount;
+    const classNumber = Math.round(percentageClassValue * (optCloudClassCount -1) + 1);
+    //console.log('class number; ', classNumber);
+    return optCloudClassPrefix + classNumber;
+  }
+  
 
 function generateListTags() {
     /* [NEW] create a new variable allTags with an empty object */
@@ -233,18 +241,18 @@ function generateListTags() {
  
       /* END LOOP: for each tag */
     }
-      /* insert HTML of all the links into the tags wrapper */
+    /* insert HTML of all the links into the tags wrapper */
     tagsWrapper.innerHTML = html;
-    console.log('linki html', tagsWrapper.innerHTML);
+    console.log('linki html: ', tagsWrapper.innerHTML);
 
     /* END LOOP: for every article: */
   }
     /* [NEW] find list of tags in right column */
-    const tagList = document.querySelector('.tags');
+    const tagsWrapper = document.querySelector('.tags');
 
 
     const tagsParams = calculateTagsParams(allTags);
-    console.log('tagsParams:', tagsParams);
+    
     /* [NEW] create variable for all links HTML code */
     let allTagsHTML = '';
 
@@ -254,7 +262,9 @@ function generateListTags() {
     allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
    }
    /* [NEW] END LOOP: for each tag in allTags: */
-   tagList.innerHTML = allTagsHTML;
+   tagsWrapper.innerHTML = allTagsHTML;
+   //console.log('allTags[tag] xxx:', allTags, 'tagsParams xxx: ', tagsParams);
+   //console.log(tagsWrapper);
 }
 generateListTags();
 
