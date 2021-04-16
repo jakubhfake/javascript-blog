@@ -1,6 +1,20 @@
 /* eslint-disable indent */
 'use strict';
 
+// Const
+
+const opts = {
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  dataTags: 'data-tags',
+  articleAuthorSelector: '.post-author',
+  tagsSelector: '.tags.list',
+  cloudClassCount: 5,
+  cloudClassPrefix: 'tag-size-',
+};
+
 const titleClickHandler = function (event) {
   event.preventDefault();
   const clickedElement = this;
@@ -26,29 +40,17 @@ const titleClickHandler = function (event) {
 
   idArticle.classList.add('active');
 };
-
-// Const
-
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  dataTags = 'data-tags',
-  optArticleAuthorSelector = '.post-author',
-  optTagsSelector = '.tags.list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-';
   
 function generateTitleLinks(customSelector = '') {
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(opts.titleListSelector);
   titleList.innerHTML = '';
   console.log(customSelector);
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.articleSelector + customSelector);
 
   let html = '';
   for (let article of articles) {
     const articleId = article.getAttribute('id');
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
     const linkHTML = '<li><a href="#' + articleId +'"><span>' + articleTitle + '</span></a></li>';
     html = html + linkHTML;
   }
@@ -64,12 +66,12 @@ generateTitleLinks();
 // Tagi w Artykułach
 
 function generateTags() {
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
   for (let article of articles) {
-    const tagList = article.querySelector(optArticleTagsSelector);
+    const tagList = article.querySelector(opts.articleTagsSelector);
     tagList.innerHTML='';
     let html = '';
-    const articleTag = article.getAttribute(dataTags);
+    const articleTag = article.getAttribute(opts.dataTags);
     const articleTagsArray = articleTag.split(' ');
      
     for(let tag of articleTagsArray){
@@ -127,9 +129,10 @@ function calculateTagsParams(tags){
     //console.log(normalizedCount);
     const averageTagCount = params.max - params.min;
     const percentageClassValue = normalizedCount / averageTagCount;
-    const classNumber = Math.round(percentageClassValue * (optCloudClassCount -1) + 1);
+    const classNumber = Math.round(percentageClassValue * (opts.cloudClassCount -1) + 1);
     //console.log('class number; ', classNumber);
-    return optCloudClassPrefix + classNumber;
+    return opts.cloudClassPrefix + classNumber;
+    
   }
   
 
@@ -138,17 +141,17 @@ function generateListTags() {
  let allTags = {};
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
   
   /* START LOOP: for every article: */
   for(let article of articles) {
     /* find tags wrapper */
-    const tagsWrapper = document.querySelector(optTagsSelector);
+    const tagsWrapper = document.querySelector(opts.tagsSelector);
     /* make html variable with empty string */
     tagsWrapper.innerHTML ='';
     let html = '';    
     /* get tags from data-tags attribute */
-    const articleTags = article.getAttribute(dataTags);
+    const articleTags = article.getAttribute(opts.dataTags);
     /* split tags into array */
     const articleTagsArray = articleTags.split(' ');
     /* START LOOP: for each tag */
@@ -217,11 +220,11 @@ addClickListenersToTags();
   
   function generateAuthors() {
     /* [DONE] find all articles with author*/
-    const articles = document.querySelectorAll(optArticleSelector);
+    const articles = document.querySelectorAll(opts.articleSelector);
     /* [DONE] START LOOP: for every article: */
     for(let article of articles) {
       /* [DONE] find author in wrapper */
-      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      const authorWrapper = article.querySelector(opts.articleAuthorSelector);
       /* [DONE]  make html variable with empty string */
       authorWrapper.innerHTML = '';
       let html = '';
