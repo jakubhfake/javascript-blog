@@ -9,6 +9,13 @@ $font-logo: "Sacramento", cursive;
 $font-header: "Oswald", sans-serif;
 $font-text: "Source Sans Pro", sans-serif;
 
+/* Tags fones colors */
+$color-font1: green;
+$color-font2: blue;
+$color-font3: orange;
+$color-font4: violet;
+$color-font5: red;
+
 /* Global */
 
 *,
@@ -122,3 +129,31 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/* Cloud Tags */
+
+.sidebar .tags{
+  display: inline;
+}
+
+.tag-size-1 {
+  font-size: 80%;
+  color: $color-font1;
+}
+.tag-size-2 {
+  font-size: 90%;
+  color: $color-font2;
+}
+.tag-size-3 {
+  font-size: 100%;
+  color: $color-font3;
+}
+.tag-size-4 {
+  font-size: 110%;
+  color: $color-font5;
+}
+.tag-size-5 {
+  font-size: 120%;
+  color: $color-font5;
+}
+

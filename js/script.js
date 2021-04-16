@@ -104,76 +104,6 @@ function tagClickHandler(event) {
   generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
-function addClickListenersToTags() {
-  const linkTags = document.querySelectorAll('a[href^="#tag-"]');
-  //console.log('Links to articles: ', linkTags);
-
-  for (let linkTag of linkTags) {
-    linkTag.addEventListener('click', tagClickHandler);
-  }
-}
-
-addClickListenersToTags();
-
-// Article Authors
-
-  
-  function generateAuthors() {
-    /* [DONE] find all articles with author*/
-    const articles = document.querySelectorAll(optArticleSelector);
-    /* [DONE] START LOOP: for every article: */
-    for(let article of articles) {
-      /* [DONE] find author in wrapper */
-      const authorWrapper = article.querySelector(optArticleAuthorSelector);
-      /* [DONE]  make html variable with empty string */
-      authorWrapper.innerHTML = '';
-      let html = '';
-      /* [DONE] get tags from data-author attribute */
-      const authorTag = article.getAttribute('data-author');
-      /* [DONE] insert HTML author name to all article into the tags wrapper */
-      const linkAuthorHTML = '<a href="#author-' + authorTag + '">by ' + authorTag + '</a>'; 
-      html = linkAuthorHTML;
-      authorWrapper.innerHTML = html;
-    /* [DONE] END LOOP: for every article: */
-    
-  }
-}
-  generateAuthors();
-
-function authorClickHandler(event) {
-
-  event.preventDefault();
-  const clickedElement = this;
-  console.log('Author was cliked!', clickedElement);
-  const href = clickedElement.getAttribute('href');
-  console.log('Author tags href; ', href);
-  const author = href.replace('#author-', '');
-  console.log(author);
-  const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
-  console.log('All active authors: ', activeAuthors);
-  for (let activeAutor of activeAuthors) {
-    activeAutor.classList.remove('active');
-  }
-  const hrefAuthors = document.querySelectorAll('a[href="' + href + '"]');
-  for (let hrefAuthor of hrefAuthors) {
-    hrefAuthor.classList.add('active');
-  }
-generateTitleLinks('[data-author="' + author + '"]');
-}
-
-function addClickListenerToAuthors () {
-/* find all links to tags */
-const linkAuthors = document.querySelectorAll('.post-author a[href^="#author-"]');
-  /* START LOOP: for each link */
-  for(let linkAuthor of linkAuthors) {
-    /* add tagClickHandler as event listener for that link */
-    linkAuthor.addEventListener('click', authorClickHandler);
-  /* END LOOP: for each link */
-  }
-}
-addClickListenerToAuthors();
-
-
 //Tags Cloud: Wyświetlenie listy tagów
 
 function calculateTagsParams(tags){
@@ -259,7 +189,7 @@ function generateListTags() {
     /* [NEW] START LOOP: for each tag in allTags: */
     for(let tag in allTags){
    /* [NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
+    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag /*+ '(' + allTags[tag] + ')' */+ '</a></li>';
    }
    /* [NEW] END LOOP: for each tag in allTags: */
    tagsWrapper.innerHTML = allTagsHTML;
@@ -268,4 +198,79 @@ function generateListTags() {
 }
 generateListTags();
 
+// dla czego musiałem przenieść całą chmurę przed addClickListener, 
+// czy JS nie powinien odczytać tej funkcji skoro wygenerował tagi przed kliknęciem??
+// może to wina jakiegoś zakresu inicjacji funkcji lub querySelectora, 
+
+function addClickListenersToTags() {
+  const linkTags = document.querySelectorAll('a[href^="#tag-"]');
+  console.log('Links to articles: ', linkTags);
+
+  for (let linkTag of linkTags) {
+    linkTag.addEventListener('click', tagClickHandler);
+  }
+}
+
+addClickListenersToTags();
+
+// Article Authors
+  
+  function generateAuthors() {
+    /* [DONE] find all articles with author*/
+    const articles = document.querySelectorAll(optArticleSelector);
+    /* [DONE] START LOOP: for every article: */
+    for(let article of articles) {
+      /* [DONE] find author in wrapper */
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      /* [DONE]  make html variable with empty string */
+      authorWrapper.innerHTML = '';
+      let html = '';
+      /* [DONE] get tags from data-author attribute */
+      const authorTag = article.getAttribute('data-author');
+      /* [DONE] insert HTML author name to all article into the tags wrapper */
+      const linkAuthorHTML = '<a href="#author-' + authorTag + '">by ' + authorTag + '</a>'; 
+      html = linkAuthorHTML;
+      authorWrapper.innerHTML = html;
+    /* [DONE] END LOOP: for every article: */
+    
+  }
+}
+  generateAuthors();
+
+function authorClickHandler(event) {
+
+  event.preventDefault();
+  const clickedElement = this;
+  console.log('Author was cliked!', clickedElement);
+  const href = clickedElement.getAttribute('href');
+  console.log('Author tags href; ', href);
+  const author = href.replace('#author-', '');
+  console.log(author);
+  const activeAuthors = document.querySelectorAll('a.active[href^="#author-"]');
+  console.log('All active authors: ', activeAuthors);
+  for (let activeAutor of activeAuthors) {
+    activeAutor.classList.remove('active');
+  }
+  const hrefAuthors = document.querySelectorAll('a[href="' + href + '"]');
+  for (let hrefAuthor of hrefAuthors) {
+    hrefAuthor.classList.add('active');
+  }
+generateTitleLinks('[data-author="' + author + '"]');
+}
+
+function addClickListenerToAuthors () {
+/* find all links to tags */
+const linkAuthors = document.querySelectorAll('.post-author a[href^="#author-"]');
+  /* START LOOP: for each link */
+  for(let linkAuthor of linkAuthors) {
+    /* add tagClickHandler as event listener for that link */
+    linkAuthor.addEventListener('click', authorClickHandler);
+  /* END LOOP: for each link */
+  }
+}
+addClickListenerToAuthors();
+
+
+
+/* POmyśleć jak dodać style scss zależnie od ilości klas w JS
 /* Don't forget delete html code !!!!!!!*/
