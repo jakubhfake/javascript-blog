@@ -220,7 +220,21 @@
       <script id="template-article-link" type="text/x-handlebars-template">
         <li><a href="#{{ id }}"><span>{{title}}</span></a></li>
       </script>
-      <script it="template-article-tag-list" type="text/x-handlebars-template"></script>
+      <script id="template-article-tag" type="text/x-handlebars-template">
+        <li><a href="#tag-{{ tag }}">{{ tag }}</a></li>
+      </script>
+      <script it="template-tag-cloud-link" type="text/x-handlebars-template">
+      
+        {{#each tags}}
+        <li><a href="#tag-{{tag}}" class="{{className}">{{tag}}</a></li>
+        {{/each}}
+      
+      </script>
+      <script id="tempate-article-author" type="text/x-handlebars-template">
+
+      </script>
+      <script id="template-author-list" type="text/x-handlebars-template">
+      </script>
       <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
       <script src="js/script.js"></script>
 </body>

@@ -2,6 +2,10 @@
 // Handlebars templates
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-colud-link').innerHTML),
+  //articleAuthor: Handlebars.compile(document.querySelector('#tempate-article-author').innerHTML),
+  //authorList: Handlebars.compile(document.querySelector('#template-author-list').innerHTML),
 };
 
 // Const
@@ -13,11 +17,9 @@ const opts = {
   articleTagsSelector: '.post-tags .list',
   dataTags: 'data-tags',
   articleAuthorSelector: '.post-author',
-  
   cloudClassCount: 5,
   cloudClassPrefix: 'tag-size-',
   dataAuthors: 'data-author',
-  //authorsListSelector: '.author.list',
 };
 
 const titleClickHandler = function (event) {
@@ -106,8 +108,10 @@ function generateTags() {
     const articleTags = article.getAttribute(opts.dataTags);
     const articleTagsArray = articleTags.split(' ');
     for(let tag of articleTagsArray) {
-      const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-      html = html + linkHTML;
+      const tagHTMLData = {tag: tag};
+      const tagHTML = templates.articleTag(tagHTMLData);
+      //const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      html = html + tagHTML;
       if(!allTags[tag]) {
         allTags[tag] = 1;
       } 
@@ -119,13 +123,21 @@ function generateTags() {
   //  console.log('linki html: ', tagsWrapper.innerHTML);
   }
   // Generate tags list in aside 
-  const tagsWrapper = document.querySelector('.tags');
-  const tagsParams = calculateTagsParams(allTags);
-  let allTagsHTML = '';
+  const tagsList = document.querySelector('.tags'),
+    tagsParams = calculateTagsParams(allTags);
+  tagsList.innerHTML = '';
+  const allTagsData = {tags: []};
   for(let tag in allTags){
-    allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
+  //const tagHTMLData = {tag: tag, tagClass: calculateTagClass(allTags[tag],tagsParams)};
+    allTagsData.tags.push({
+      tag: tag,
+      count: allTags[tag],
+      className: calculateTagClass(allTags[tag], tagsParams)
+    });
+    //allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }
-  tagsWrapper.innerHTML = allTagsHTML;
+  tagsList.innerHTML = templates.tagCloudLink(allTagData);
+  console.log('tagi lista Hendlebars: ',allTagsData);
 }
 generateTags();
 
