@@ -132,8 +132,9 @@ body {
 
 /* Cloud Tags */
 
-.sidebar .tags{
+.sidebar .tags li{
   display: inline;
+  padding-right: 10px;
 }
 
 .tag-size-1 {

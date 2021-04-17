@@ -14,6 +14,7 @@ const opts = {
   cloudClassCount: 5,
   cloudClassPrefix: 'tag-size-',
 };
+// Dokończyć dodawanie obiektów zgodnie z wytycznymi na końcu modułu 7.3 
 
 const titleClickHandler = function (event) {
   event.preventDefault();
