@@ -4,8 +4,8 @@ const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
   tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
-  //articleAuthor: Handlebars.compile(document.querySelector('#tempate-article-author').innerHTML),
-  //authorList: Handlebars.compile(document.querySelector('#template-author-list').innerHTML),
+  articleAuthorLink: Handlebars.compile(document.querySelector('#tempate-article-author').innerHTML),
+  authorList: Handlebars.compile(document.querySelector('#template-author-list').innerHTML),
 };
 
 // Const
@@ -128,7 +128,6 @@ function generateTags() {
 
   const allTagsData = {tags: []};
   for(let tag in allTags){
-  //  const tagHTMLData = {tag: tag, tagClass: calculateTagClass(allTags[tag],tagsParams)};
     allTagsData.tags.push({
       tag: tag,
       count: allTags[tag],
@@ -137,7 +136,6 @@ function generateTags() {
     //allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }
   tagsList.innerHTML = templates.tagCloudLink(allTagsData);
-  
 }
 generateTags();
 
@@ -182,8 +180,10 @@ function generateListAuthors() {
     authorsWrapper.innerHTML ='';
     let html = '';
     const articleAuthor = article.getAttribute(opts.dataAuthors);
-    const linkHTML = '<a href="#author-' + articleAuthor + '">by ' + articleAuthor + '</a>';
-    html = linkHTML;
+    //const linkHTML = '<a href="#author-' + articleAuthor + '">by ' + articleAuthor + '</a>';
+    const authorHTMLData = {author: articleAuthor};
+    const authorHTML = templates.articleAuthorLink(authorHTMLData);     
+    html = authorHTML;
     if(!authors[articleAuthor]) {
       authors[articleAuthor] = 1;
     } 
@@ -196,11 +196,16 @@ function generateListAuthors() {
   // Generate authors list in aside
   const authorsWrapper = document.querySelector('.authors');
   authorsWrapper.innerHTML ='';
-  let authorsHTML = '';
+  //let authorsHTML = '';
+  const allAuthorsData = {authors: []};
   for(let author in authors){
-    authorsHTML += '<li><a href="#author-' + author + '">' + author + '(' + authors[author] + ')' + '</a></li>';
-  }
-  authorsWrapper.innerHTML = authorsHTML;
+  //  authorsHTML += '<li><a href="#author-' + author + '">' + author + '(' + authors[author] + ')' + '</a></li>';
+    allAuthorsData.authors.push({
+      author: author,
+      articleQuantity: authors[author],
+    });
+}
+  authorsWrapper.innerHTML = templates.authorList(allAuthorsData);
 }
 generateListAuthors();
 
