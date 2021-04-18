@@ -58,11 +58,9 @@ function generateTitleLinks(customSelector = '') {
   for (let article of articles) {
     const articleId = article.getAttribute('id');
     const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
-    //const linkHTML = '<li><a href="#' + articleId +'"><span>' + articleTitle + '</span></a></li>';
     const linkHTMLData = {id: articleId, title: articleTitle};
     const linkHTML = templates.articleLink(linkHTMLData);
     html = html + linkHTML;
-    //console.log('handle html', html);
   }
   titleList.innerHTML = html;
   const links = document.querySelectorAll('.titles a');
@@ -78,7 +76,6 @@ generateTitleLinks();
 function calculateTagsParams(tags){
   const params = {max: 0, min: 999999};
   for(let tag in tags){
-    //console.log(tag + ' was used ' + tags[tag] + ' times');
     if(tags[tag] > params.max){
       params.max = tags[tag];
     }
@@ -110,7 +107,6 @@ function generateTags() {
     for(let tag of articleTagsArray) {
       const tagHTMLData = {tag: tag};
       const tagHTML = templates.articleTag(tagHTMLData);
-      //const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
       html = html + tagHTML;
       if(!allTags[tag]) {
         allTags[tag] = 1;
@@ -133,7 +129,6 @@ function generateTags() {
       count: allTags[tag],
       className: calculateTagClass(allTags[tag], tagsParams),
     });
-    //allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }
   tagsList.innerHTML = templates.tagCloudLink(allTagsData);
 }
@@ -180,7 +175,6 @@ function generateListAuthors() {
     authorsWrapper.innerHTML ='';
     let html = '';
     const articleAuthor = article.getAttribute(opts.dataAuthors);
-    //const linkHTML = '<a href="#author-' + articleAuthor + '">by ' + articleAuthor + '</a>';
     const authorHTMLData = {author: articleAuthor};
     const authorHTML = templates.articleAuthorLink(authorHTMLData);     
     html = authorHTML;
@@ -191,15 +185,12 @@ function generateListAuthors() {
       authors[articleAuthor]++;
     }
     authorsWrapper.innerHTML = html;
-  // console.log('author html: ', authorsWrapper.innerHTML);
   }
   // Generate authors list in aside
   const authorsWrapper = document.querySelector('.authors');
   authorsWrapper.innerHTML ='';
-  //let authorsHTML = '';
   const allAuthorsData = {authors: []};
   for(let author in authors){
-  //  authorsHTML += '<li><a href="#author-' + author + '">' + author + '(' + authors[author] + ')' + '</a></li>';
     allAuthorsData.authors.push({
       author: author,
       articleQuantity: authors[author],
