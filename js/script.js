@@ -195,7 +195,7 @@ function generateListAuthors() {
       author: author,
       articleQuantity: authors[author],
     });
-}
+  }
   authorsWrapper.innerHTML = templates.authorList(allAuthorsData);
 }
 generateListAuthors();
