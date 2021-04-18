@@ -223,10 +223,9 @@
       <script id="template-article-tag" type="text/x-handlebars-template">
         <li><a href="#tag-{{ tag }}">{{ tag }}</a></li>
       </script>
-      <script it="template-tag-cloud-link" type="text/x-handlebars-template">
-      
+      <script id="template-tag-cloud-link" type="text/x-handlebars-template">
         {{#each tags}}
-        <li><a href="#tag-{{tag}}" class="{{className}">{{tag}}</a></li>
+        <li><a href="#tag-{{tag}}" class="{{className}">{{ tag }}</a></li>
         {{/each}}
       
       </script>

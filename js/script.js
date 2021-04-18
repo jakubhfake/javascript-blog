@@ -3,7 +3,7 @@
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
   articleTag: Handlebars.compile(document.querySelector('#template-article-tag').innerHTML),
-  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-colud-link').innerHTML),
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
   //articleAuthor: Handlebars.compile(document.querySelector('#tempate-article-author').innerHTML),
   //authorList: Handlebars.compile(document.querySelector('#template-author-list').innerHTML),
 };
@@ -118,26 +118,26 @@ function generateTags() {
       else {
         allTags[tag]++;
       }
+      tagsWrapper.innerHTML = html;
     }
-    tagsWrapper.innerHTML = html;
-  //  console.log('linki html: ', tagsWrapper.innerHTML);
   }
   // Generate tags list in aside 
   const tagsList = document.querySelector('.tags'),
     tagsParams = calculateTagsParams(allTags);
   tagsList.innerHTML = '';
+
   const allTagsData = {tags: []};
   for(let tag in allTags){
-  //const tagHTMLData = {tag: tag, tagClass: calculateTagClass(allTags[tag],tagsParams)};
+  //  const tagHTMLData = {tag: tag, tagClass: calculateTagClass(allTags[tag],tagsParams)};
     allTagsData.tags.push({
       tag: tag,
       count: allTags[tag],
-      className: calculateTagClass(allTags[tag], tagsParams)
+      className: calculateTagClass(allTags[tag], tagsParams),
     });
     //allTagsHTML += '<li><a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag],tagsParams) + '">' + tag + '(' + allTags[tag] + ')' + '</a></li>';
   }
-  tagsList.innerHTML = templates.tagCloudLink(allTagData);
-  console.log('tagi lista Hendlebars: ',allTagsData);
+  tagsList.innerHTML = templates.tagCloudLink(allTagsData);
+  
 }
 generateTags();
 
@@ -191,7 +191,7 @@ function generateListAuthors() {
       authors[articleAuthor]++;
     }
     authorsWrapper.innerHTML = html;
-    console.log('author html: ', authorsWrapper.innerHTML);
+  // console.log('author html: ', authorsWrapper.innerHTML);
   }
   // Generate authors list in aside
   const authorsWrapper = document.querySelector('.authors');
